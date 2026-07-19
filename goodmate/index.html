@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Good Mate — قود مِت | قهوة مختصة في الرياض</title>
+<meta name="description" content="Good Mate قود مِت — مقهى قهوة مختصة في حي النخيل، طريق التخصصي، الرياض. تصميم مبدئي." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --ink: #1c1815;
+    --ink-soft: #6b6259;
+    --cream: #fffdf9;
+    --terra: #b5462a;
+    --terra-dark: #93361f;
+    --sand: #e9e2d6;
+    --line: #ddd4c5;
+    --ar-font: "IBM Plex Sans Arabic", sans-serif;
+    --en-font: "Space Grotesk", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--ar-font);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+  .en { font-family: var(--en-font); letter-spacing: .02em; }
+
+  .draft-note {
+    background: var(--ink); color: #f7f4ef;
+    text-align: center; font-size: .82rem; padding: 8px 16px;
+  }
+  .draft-note b { color: #f0c9a8; }
+
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(247,244,239,.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1040px; margin: 0 auto; }
+  .logo { font-family: var(--en-font); font-weight: 700; font-size: 1.25rem; }
+  .logo span { color: var(--terra); }
+  .nav-links { display: flex; gap: 26px; font-size: .95rem; font-weight: 500; color: var(--ink-soft); }
+  .nav-links a:hover { color: var(--terra); }
+  .btn {
+    display: inline-block; font-weight: 600; font-size: .95rem;
+    padding: 12px 26px; border-radius: 999px; transition: all .18s ease;
+  }
+  .btn-dark { background: var(--ink); color: var(--cream); }
+  .btn-dark:hover { background: var(--terra); transform: translateY(-2px); }
+  .btn-line { border: 1.5px solid var(--ink); }
+  .btn-line:hover { background: var(--ink); color: var(--cream); }
+
+  header { padding: 84px 0 70px; text-align: center; }
+  .kicker { font-family: var(--en-font); font-weight: 600; font-size: .8rem; letter-spacing: .35em; text-transform: uppercase; color: var(--terra); margin-bottom: 22px; }
+  h1 { font-family: var(--en-font); font-weight: 700; font-size: clamp(3rem, 9vw, 5.5rem); line-height: 1.05; letter-spacing: -.02em; }
+  h1 .mate { color: var(--terra); }
+  .hero-ar { font-size: clamp(1.15rem, 2.6vw, 1.5rem); font-weight: 500; color: var(--ink-soft); margin: 20px auto 8px; }
+  .hero-sub { color: var(--ink-soft); max-width: 520px; margin: 0 auto 36px; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero-strip {
+    margin-top: 64px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    padding: 18px 0; overflow: hidden; white-space: nowrap;
+    font-family: var(--en-font); font-weight: 600; font-size: .9rem; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .hero-strip .dot { color: var(--terra); margin: 0 18px; }
+
+  section { padding: 76px 0; }
+  .section-head { text-align: center; margin-bottom: 48px; }
+  .tag { font-family: var(--en-font); font-weight: 600; font-size: .75rem; letter-spacing: .3em; text-transform: uppercase; color: var(--terra); display: block; margin-bottom: 10px; }
+  h2 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); font-weight: 700; }
+
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .menu-card { background: var(--cream); border: 1px solid var(--line); border-radius: 18px; padding: 26px; }
+  .menu-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dashed var(--line); display: flex; justify-content: space-between; align-items: center; }
+  .menu-card h3 .en { color: var(--ink-soft); font-size: .8rem; font-weight: 500; }
+  .item { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; font-size: .98rem; }
+  .item span:last-child { color: var(--terra); font-weight: 600; white-space: nowrap; }
+  .menu-note { text-align: center; color: var(--ink-soft); font-size: .9rem; margin-top: 22px; }
+
+  .about { background: var(--sand); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .about-visual {
+    aspect-ratio: 4/3; border-radius: 20px; border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 30% 30%, #d9c3ab 0 18%, transparent 18.5%),
+      radial-gradient(circle at 68% 62%, var(--terra) 0 12%, transparent 12.5%),
+      linear-gradient(160deg, #efe7da, #e2d5c2);
+    display: flex; align-items: flex-end; padding: 22px;
+  }
+  .about-visual .en { background: var(--ink); color: var(--cream); font-size: .7rem; letter-spacing: .25em; text-transform: uppercase; padding: 8px 14px; border-radius: 999px; }
+  .about-text h2 { margin-bottom: 16px; }
+  .about-text p { color: var(--ink-soft); margin-bottom: 14px; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+  .info-card { background: var(--cream); border: 1px solid var(--line); border-radius: 18px; padding: 26px; text-align: center; }
+  .info-card .ico { font-size: 1.6rem; margin-bottom: 10px; }
+  .info-card b { display: block; font-size: 1.02rem; margin-bottom: 6px; }
+  .info-card span { color: var(--ink-soft); font-size: .95rem; }
+  .info-card a { color: var(--terra); font-weight: 600; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0; text-align: center; color: var(--ink-soft); font-size: .88rem; }
+  footer .en { font-weight: 600; color: var(--ink); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
+    header { padding: 64px 0 52px; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="draft-note">تصميم مبدئي مجاني — أعدّه <b>بدر</b> لفريق Good Mate · قابل للتعديل الكامل (الألوان، الأقسام، الأسعار) <span class="en">DRAFT v1</span></div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo en">GOOD<span> MATE</span></div>
+    <div class="nav-links">
+      <a href="#menu">المنيو</a>
+      <a href="#about">قصتنا</a>
+      <a href="#visit">زورونا</a>
+    </div>
+    <a class="btn btn-dark" href="#visit">وين نحن؟</a>
+  </div>
+</nav>
+
+<header>
+  <div class="container">
+    <div class="kicker en">Specialty Coffee · Riyadh</div>
+    <h1 class="en">GOOD <span class="mate">MATE</span></h1>
+    <p class="hero-ar">قهوة مختصة تُحضّر بعناية… ورفقة أحلى</p>
+    <p class="hero-sub">في قلب طريق التخصصي بحي النخيل — محمصات مختارة، وصفات متقنة، ومساحة صُممت لتكون وجهتك اليومية.</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark" href="#menu">شوف المنيو</a>
+      <a class="btn btn-line" href="https://www.instagram.com/good.matecafe" target="_blank" rel="noopener">تابعنا في إنستغرام</a>
+    </div>
+  </div>
+  <div class="hero-strip en">
+    ESPRESSO <span class="dot">●</span> V60 <span class="dot">●</span> COLD BREW <span class="dot">●</span> MATCHA <span class="dot">●</span> ESPRESSO <span class="dot">●</span> V60 <span class="dot">●</span> COLD BREW <span class="dot">●</span> MATCHA
+  </div>
+</header>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag en">The Menu</span>
+      <h2>المنيو</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <h3>مشروبات حارة <span class="en">HOT</span></h3>
+        <div class="item"><span>إسبريسو</span><span>12 ر.س</span></div>
+        <div class="item"><span>فلات وايت</span><span>18 ر.س</span></div>
+        <div class="item"><span>لاتيه</span><span>19 ر.س</span></div>
+        <div class="item"><span>V60 — تقطير</span><span>22 ر.س</span></div>
+      </div>
+      <div class="menu-card">
+        <h3>مشروبات باردة <span class="en">ICED</span></h3>
+        <div class="item"><span>آيس لاتيه</span><span>20 ر.س</span></div>
+        <div class="item"><span>كولد برو</span><span>22 ر.س</span></div>
+        <div class="item"><span>آيس ماتشا</span><span>24 ر.س</span></div>
+        <div class="item"><span>سبانش لاتيه</span><span>23 ر.س</span></div>
+      </div>
+      <div class="menu-card">
+        <h3>حلا اليوم <span class="en">SWEETS</span></h3>
+        <div class="item"><span>كوكيز محشي</span><span>14 ر.س</span></div>
+        <div class="item"><span>كرواسون زبدة</span><span>13 ر.س</span></div>
+        <div class="item"><span>سان سبستيان</span><span>26 ر.س</span></div>
+        <div class="item"><span>تشيز كيك</span><span>24 ر.س</span></div>
+      </div>
+    </div>
+    <p class="menu-note">* الأسعار هنا تجريبية للعرض فقط — تُستبدل بمنيو Good Mate الفعلي</p>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual"><span class="en">Brewed with care</span></div>
+      <div class="about-text">
+        <span class="tag en">Our Story</span>
+        <h2>قصتنا</h2>
+        <p>بدأنا Good Mate بفكرة بسيطة: القهوة الجيدة تستحق رفقة جيدة. كل كوب نقدمه يبدأ من محمصات مختارة بعناية، ويُحضّر على يد باريستا يعرف أن التفاصيل الصغيرة تصنع الفرق الكبير.</p>
+        <p>مساحتنا في حي النخيل صُممت لتكون أكثر من مقهى — مكان تبدأ فيه صباحك، تنجز فيه شغلك، أو تلتقي فيه بأصحابك.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="container">
+    <div class="section-head">
+      <span class="tag en">Visit Us</span>
+      <h2>زورونا</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ico">📍</div>
+        <b>الموقع</b>
+        <span>حي النخيل، طريق التخصصي<br />الرياض</span>
+      </div>
+      <div class="info-card">
+        <div class="ico">🕒</div>
+        <b>أوقات العمل</b>
+        <span>يوميًا 6 صباحًا — 12 منتصف الليل<br />(تُعدّل حسب أوقاتكم الفعلية)</span>
+      </div>
+      <div class="info-card">
+        <div class="ico">📷</div>
+        <b>تابعونا</b>
+        <span><a href="https://www.instagram.com/good.matecafe" target="_blank" rel="noopener">@good.matecafe</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="en">GOOD MATE</span> — قهوة مختصة · الرياض © 2026
+  </div>
+</footer>
+
+</body>
+</html>
