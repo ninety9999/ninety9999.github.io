@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTTO GROTESK — Variable Type Specimen</title>
+<meta name="description" content="OTTO GROTESK. A variable grotesk in 2 axes, 18 styles, zero apologies. Specimen and license.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --w: #f4f3ef;
+    --k: #0c0c0b;
+    --acid: #ff2e00;
+    --grid: #0c0c0b;
+    --sans: "Archivo", Helvetica, Arial, sans-serif;
+    --mono: "Space Mono", monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--w);
+    color: var(--k);
+    font-family: var(--sans);
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--acid); color: var(--w); }
+
+  /* ---------- header ---------- */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    border-bottom: 2px solid var(--k);
+    background: var(--w);
+    height: 54px;
+  }
+  header > * {
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  header .logo {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: .02em;
+    border-right: 2px solid var(--k);
+    text-decoration: none;
+    color: var(--k);
+    font-variation-settings: "wdth" 125;
+  }
+  header .mid { flex: 1; gap: 26px; }
+  header .mid a {
+    color: var(--k);
+    text-decoration: none;
+    position: relative;
+  }
+  header .mid a:hover { color: var(--acid); }
+  header .buy {
+    background: var(--k);
+    color: var(--w);
+    border-left: 2px solid var(--k);
+    text-decoration: none;
+    transition: background .2s, color .2s;
+    white-space: nowrap;
+  }
+  header .buy:hover { background: var(--acid); color: var(--w); }
+  @media (max-width: 700px) { header .mid a:nth-child(n+3) { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero {
+    min-height: 100svh;
+    padding-top: 54px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 4px solid var(--k);
+    cursor: crosshair;
+  }
+  .hero-type {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2vh 3vw;
+    user-select: none;
+  }
+  .hero-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    line-height: .8;
+    gap: 4vw;
+  }
+  .hero-line span {
+    font-size: clamp(70px, 20.5vw, 330px);
+    font-weight: 500;
+    display: inline-block;
+    will-change: font-variation-settings;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-top: 2px solid var(--k);
+  }
+  .hero-meta div {
+    padding: 14px 18px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    border-right: 2px solid var(--k);
+  }
+  .hero-meta div:last-child { border-right: none; }
+  .hero-meta b { display: block; font-family: var(--sans); font-size: 15px; font-weight: 800; margin-top: 2px; }
+  @media (max-width: 700px) {
+    .hero-meta { grid-template-columns: 1fr 1fr; }
+    .hero-meta div:nth-child(2) { border-right: none; }
+    .hero-meta div:nth-child(-n+2) { border-bottom: 2px solid var(--k); }
+  }
+
+  /* ---------- marquee ---------- */
+  .marquee {
+    background: var(--k);
+    color: var(--w);
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 4px solid var(--k);
+    padding: 10px 0;
+  }
+  .marquee-inner {
+    display: inline-block;
+    animation: slide 22s linear infinite;
+  }
+  .marquee-inner span {
+    font-size: clamp(18px, 2.6vw, 30px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-right: 3.2vw;
+  }
+  .marquee-inner .o { color: transparent; -webkit-text-stroke: 1px var(--w); }
+  .marquee-inner .a { color: var(--acid); }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- section base ---------- */
+  .sec-tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 3vw;
+    border-bottom: 2px solid var(--k);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+  .sec-tag em { font-style: normal; color: var(--acid); }
+
+  /* ---------- weights ---------- */
+  .weights { border-bottom: 4px solid var(--k); }
+  .wrow {
+    display: grid;
+    grid-template-columns: 110px 1fr 90px;
+    align-items: center;
+    gap: 3vw;
+    padding: 4px 3vw;
+    border-bottom: 1px solid var(--k);
+    overflow: hidden;
+  }
+  .wrow:last-child { border-bottom: none; }
+  .wrow .nm { font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+  .wrow .sample {
+    font-size: clamp(34px, 6vw, 84px);
+    line-height: 1.05;
+    white-space: nowrap;
+    transition: font-variation-settings .5s cubic-bezier(.2,.8,.2,1), color .2s;
+  }
+  .wrow .val { font-family: var(--mono); font-size: 11px; text-align: right; }
+  .wrow:hover .sample { color: var(--acid); }
+  .wrow:hover { background: #eceae2; }
+
+  /* ---------- glyphs ---------- */
+  .glyphs { border-bottom: 4px solid var(--k); position: relative; }
+  .glyph-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  }
+  .glyph {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(26px, 3.4vw, 44px);
+    font-weight: 500;
+    border-right: 1px solid var(--k);
+    border-bottom: 1px solid var(--k);
+    cursor: pointer;
+    transition: background .12s, color .12s;
+    user-select: none;
+  }
+  .glyph:hover { background: var(--k); color: var(--w); font-variation-settings: "wdth" 125, "wght" 900; }
+  .glyph-view {
+    position: absolute;
+    right: 0; bottom: 0;
+    width: min(300px, 40vw);
+    aspect-ratio: 1;
+    background: var(--acid);
+    color: var(--w);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(120px, 16vw, 230px);
+    font-weight: 800;
+    pointer-events: none;
+    z-index: 5;
+    border-left: 4px solid var(--k);
+    border-top: 4px solid var(--k);
+  }
+
+  /* ---------- tester ---------- */
+  .tester { border-bottom: 4px solid var(--k); background: var(--k); color: var(--w); }
+  .tester .sec-tag { border-bottom: 2px solid var(--w); color: var(--w); }
+  .tester-area {
+    padding: 5vh 3vw;
+  }
+  #tester-text {
+    width: 100%;
+    background: transparent;
+    color: var(--w);
+    border: none;
+    outline: none;
+    font-family: var(--sans);
+    text-align: center;
+    line-height: 1.02;
+    resize: none;
+    overflow: hidden;
+    caret-color: var(--acid);
+  }
+  #tester-text::selection { background: var(--acid); }
+  .controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 2px solid var(--w);
+  }
+  .ctl {
+    padding: 18px 3vw 22px;
+    border-right: 2px solid var(--w);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .ctl:last-child { border-right: none; }
+  .ctl label { display: flex; justify-content: space-between; margin-bottom: 12px; }
+  .ctl output { color: var(--acid); }
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 2px;
+    background: var(--w);
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px; height: 18px;
+    background: var(--acid);
+    border: 2px solid var(--w);
+    cursor: ew-resize;
+    border-radius: 0;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px;
+    background: var(--acid);
+    border: 2px solid var(--w);
+    cursor: ew-resize;
+    border-radius: 0;
+  }
+  @media (max-width: 700px) {
+    .controls { grid-template-columns: 1fr; }
+    .ctl { border-right: none; border-bottom: 2px solid var(--w); }
+    .ctl:last-child { border-bottom: none; }
+  }
+
+  /* ---------- manifesto ---------- */
+  .manifesto {
+    padding: 10vh 3vw;
+    border-bottom: 4px solid var(--k);
+  }
+  .manifesto p {
+    font-size: clamp(28px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -.01em;
+    max-width: 18ch;
+  }
+  .manifesto p b { font-weight: 900; }
+  .manifesto p em { font-style: italic; color: var(--acid); }
+  .manifesto .sig {
+    margin-top: 5vh;
+    font-family: var(--mono);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  /* ---------- license / footer ---------- */
+  .license { border-bottom: 4px solid var(--k); }
+  .lic-row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 3vw;
+    align-items: center;
+    padding: 22px 3vw;
+    border-bottom: 1px solid var(--k);
+    text-decoration: none;
+    color: var(--k);
+    transition: background .15s, color .15s;
+  }
+  .lic-row:hover { background: var(--k); color: var(--w); }
+  .lic-row:hover .price { color: var(--acid); }
+  .lic-row .t { font-weight: 800; font-size: clamp(20px, 3vw, 34px); font-variation-settings: "wdth" 116; }
+  .lic-row .d { font-family: var(--mono); font-size: 11px; text-transform: uppercase; }
+  .lic-row .price { font-family: var(--mono); font-size: clamp(16px, 2.4vw, 24px); font-weight: 700; }
+  footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px 3vw 26px;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  footer a { color: var(--k); text-decoration: none; }
+  footer a:hover { color: var(--acid); }
+
+  .big-otto {
+    font-weight: 900;
+    font-variation-settings: "wdth" 62;
+    font-size: clamp(90px, 22vw, 340px);
+    line-height: .78;
+    text-align: center;
+    padding: 6vh 0 2vh;
+    letter-spacing: -.02em;
+    user-select: none;
+  }
+  .big-otto span { transition: color .15s; }
+  .big-otto span:hover { color: var(--acid); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .marquee-inner { animation: none; }
+    *, *::before, *::after { transition-duration: .01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">OTTO*</a>
+  <nav class="mid">
+    <a href="#weights">Styles</a>
+    <a href="#glyphs">Glyphs</a>
+    <a href="#tester">Tester</a>
+    <a href="#license">License</a>
+  </nav>
+  <a class="buy" href="#license">Buy — €90</a>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-type" id="hero-type">
+    <div class="hero-line"><span>OTTO</span><span>GRO</span></div>
+    <div class="hero-line"><span>TESK</span><span>2026</span></div>
+  </div>
+  <div class="hero-meta">
+    <div>Axes<b>Weight · Width</b></div>
+    <div>Styles<b>18 + Variable</b></div>
+    <div>Glyphs<b>612 / Latin Ext</b></div>
+    <div>Move your cursor<b>Type follows ↑</b></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner" id="marquee">
+    <span>Otto Grotesk</span><span class="o">Variable</span><span class="a">2 Axes</span><span>18 Styles</span><span class="o">No Apologies</span><span class="a">€90</span>
+    <span>Otto Grotesk</span><span class="o">Variable</span><span class="a">2 Axes</span><span>18 Styles</span><span class="o">No Apologies</span><span class="a">€90</span>
+  </div>
+</div>
+
+<section class="weights" id="weights">
+  <div class="sec-tag"><span>01 — Styles</span><em>Hover a row</em></div>
+  <div id="wrows"></div>
+</section>
+
+<section class="glyphs" id="glyphs">
+  <div class="sec-tag"><span>02 — Glyph set</span><em>612 glyphs, 6 shown per taste</em></div>
+  <div class="glyph-grid" id="glyph-grid"></div>
+  <div class="glyph-view" id="glyph-view" aria-hidden="true">A</div>
+</section>
+
+<section class="tester" id="tester">
+  <div class="sec-tag"><span>03 — Type tester</span><em>Click and type</em></div>
+  <div class="tester-area">
+    <textarea id="tester-text" rows="2" spellcheck="false" aria-label="Type tester">Grumpy wizards make toxic brew.</textarea>
+  </div>
+  <div class="controls">
+    <div class="ctl">
+      <label>Size <output id="o-size">120</output></label>
+      <input type="range" id="r-size" min="24" max="240" value="120">
+    </div>
+    <div class="ctl">
+      <label>Weight <output id="o-wght">700</output></label>
+      <input type="range" id="r-wght" min="100" max="900" value="700">
+    </div>
+    <div class="ctl">
+      <label>Width <output id="o-wdth">100</output></label>
+      <input type="range" id="r-wdth" min="62" max="125" value="100">
+    </div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <p><b>Neutral</b> is a myth invented by people <em>afraid of ink.</em> Otto is not neutral.</p>
+  <p class="sig">— Studio Otto, Zürich · Est. 2019</p>
+</section>
+
+<section class="license" id="license">
+  <div class="sec-tag"><span>04 — License</span><em>One-time. Forever.</em></div>
+  <a class="lic-row" href="#"><span class="t">Desktop + Web</span><span class="d">1 designer · 100k views/mo</span><span class="price">€90</span></a>
+  <a class="lic-row" href="#"><span class="t">Studio</span><span class="d">10 designers · 1M views/mo</span><span class="price">€290</span></a>
+  <a class="lic-row" href="#"><span class="t">Enterprise</span><span class="d">Unlimited · App embedding</span><span class="price">€990</span></a>
+</section>
+
+<div class="big-otto" aria-hidden="true" id="big-otto">OTTO</div>
+
+<footer>
+  <span>© 2026 Studio Otto Type Foundry — Zürich</span>
+  <a href="mailto:type@ottogrotesk.ch">type@ottogrotesk.ch</a>
+  <span>Set in itself, obviously</span>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- hero cursor-warped type ---------- */
+  const heroSpans = [...document.querySelectorAll(".hero-line span")];
+  const heroBox = document.getElementById("hero-type");
+  const state = heroSpans.map(() => ({ wght: 500, wdth: 100, tw: 500, td: 100 }));
+  let mx = -1e4, my = -1e4;
+  heroBox.addEventListener("pointermove", e => { mx = e.clientX; my = e.clientY; });
+  heroBox.addEventListener("pointerleave", () => { mx = -1e4; my = -1e4; });
+
+  function heroTick() {
+    heroSpans.forEach((sp, i) => {
+      const r = sp.getBoundingClientRect();
+      const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      const d = Math.hypot(mx - cx, my - cy);
+      const range = Math.max(innerWidth, 600) * 0.45;
+      const p = Math.max(0, 1 - d / range);
+      const s = state[i];
+      s.tw = 300 + p * 600;          // 300..900
+      s.td = 75 + p * 50;            // 75..125
+      s.wght += (s.tw - s.wght) * 0.09;
+      s.wdth += (s.td - s.wdth) * 0.09;
+      sp.style.fontVariationSettings = `"wght" ${s.wght.toFixed(0)}, "wdth" ${s.wdth.toFixed(1)}`;
+    });
+    requestAnimationFrame(heroTick);
+  }
+  if (!reduceMotion) requestAnimationFrame(heroTick);
+
+  /* ---------- weight rows ---------- */
+  const weights = [
+    ["Thin", 100], ["Light", 300], ["Regular", 400], ["Medium", 500],
+    ["Bold", 700], ["Black", 900],
+  ];
+  const wrows = document.getElementById("wrows");
+  wrows.innerHTML = weights.map(([nm, v]) => `
+    <div class="wrow" data-w="${v}">
+      <span class="nm">${nm}</span>
+      <span class="sample" style="font-variation-settings:'wght' ${v}, 'wdth' 100">The quick brown fox — 0123456789</span>
+      <span class="val">${v}</span>
+    </div>`).join("");
+  wrows.querySelectorAll(".wrow").forEach(row => {
+    const s = row.querySelector(".sample");
+    const v = +row.dataset.w;
+    row.addEventListener("mouseenter", () => s.style.fontVariationSettings = `'wght' ${v}, 'wdth' 125`);
+    row.addEventListener("mouseleave", () => s.style.fontVariationSettings = `'wght' ${v}, 'wdth' 100`);
+  });
+
+  /* ---------- glyph grid ---------- */
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789&?!§@%#*«»";
+  const grid = document.getElementById("glyph-grid");
+  const view = document.getElementById("glyph-view");
+  grid.innerHTML = [...chars].map(c => `<span class="glyph">${c}</span>`).join("");
+  grid.addEventListener("pointerover", e => {
+    if (e.target.classList.contains("glyph")) view.textContent = e.target.textContent;
+  });
+  // idle flicker: random glyph inverts briefly
+  if (!reduceMotion) {
+    const cells = [...grid.children];
+    setInterval(() => {
+      const c = cells[Math.floor(Math.random() * cells.length)];
+      c.style.background = "var(--acid)";
+      c.style.color = "var(--w)";
+      setTimeout(() => { c.style.background = ""; c.style.color = ""; }, 260);
+    }, 700);
+  }
+
+  /* ---------- tester ---------- */
+  const tt = document.getElementById("tester-text");
+  const rs = document.getElementById("r-size"), rw = document.getElementById("r-wght"), rd = document.getElementById("r-wdth");
+  const os = document.getElementById("o-size"), ow = document.getElementById("o-wght"), od = document.getElementById("o-wdth");
+  function applyTester() {
+    tt.style.fontSize = rs.value + "px";
+    tt.style.fontVariationSettings = `"wght" ${rw.value}, "wdth" ${rd.value}`;
+    os.textContent = rs.value;
+    ow.textContent = rw.value;
+    od.textContent = rd.value;
+    fitTester();
+  }
+  function fitTester() {
+    tt.style.height = "auto";
+    tt.style.height = tt.scrollHeight + "px";
+  }
+  [rs, rw, rd].forEach(r => r.addEventListener("input", applyTester));
+  tt.addEventListener("input", fitTester);
+  applyTester();
+
+  /* ---------- big otto scroll-weight ---------- */
+  const bo = document.getElementById("big-otto");
+  bo.innerHTML = [...bo.textContent].map(c => `<span>${c}</span>`).join("");
+  const boSpans = [...bo.children];
+  function boTick() {
+    const r = bo.getBoundingClientRect();
+    const p = Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
+    boSpans.forEach((sp, i) => {
+      const off = Math.sin(p * Math.PI * 2 + i * 1.1) * 0.5 + 0.5;
+      sp.style.fontVariationSettings = `"wght" ${(200 + off * 700).toFixed(0)}, "wdth" ${(62 + p * 63).toFixed(1)}`;
+    });
+  }
+  if (!reduceMotion) {
+    addEventListener("scroll", () => requestAnimationFrame(boTick), { passive: true });
+    boTick();
+  }
+})();
+</script>
+</body>
+</html>

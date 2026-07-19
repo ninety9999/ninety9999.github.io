@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Méridien — Maison d'Horlogerie, Genève</title>
+<meta name="description" content="Méridien. Mechanical watchmaking in the classical tradition since 1874. Geneva.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f2eee4;
+    --paper-2: #eae4d6;
+    --ink: #211d15;
+    --ink-soft: #5c554a;
+    --gold: #9a7b3f;
+    --gold-soft: #b89a5e;
+    --hair: rgba(33, 29, 21, .16);
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --display: "Italiana", serif;
+    --sans: "Jost", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--gold); color: var(--paper); }
+
+  .label {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .gold { color: var(--gold); }
+
+  /* ---------- header ---------- */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 26px clamp(22px, 5vw, 64px);
+    transition: background .5s, box-shadow .5s;
+  }
+  header.scrolled {
+    background: rgba(242, 238, 228, .92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 1px 0 var(--hair);
+  }
+  .brand {
+    font-family: var(--display);
+    font-size: 26px;
+    letter-spacing: .34em;
+    text-indent: .34em;
+    text-align: center;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  header nav { display: flex; gap: 34px; }
+  header nav.right { justify-content: flex-end; }
+  header nav a {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    position: relative;
+    transition: color .35s;
+  }
+  header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -6px;
+    width: 100%; height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .45s cubic-bezier(.6,0,.2,1);
+  }
+  header nav a:hover { color: var(--ink); }
+  header nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+  @media (max-width: 760px) { header nav { display: none; } header { grid-template-columns: 1fr; } }
+
+  /* ---------- hero ---------- */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 120px 24px 60px;
+  }
+  .hero .label { margin-bottom: 3.2vh; }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(58px, 11vw, 168px);
+    line-height: .95;
+    letter-spacing: .1em;
+    text-indent: .1em;
+  }
+  .hero .tagline {
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(17px, 2vw, 23px);
+    color: var(--ink-soft);
+    margin-top: 2.4vh;
+  }
+  .hero-watch {
+    margin-top: 5vh;
+    width: clamp(260px, 34vw, 420px);
+    position: relative;
+    animation: watchIn 1.8s cubic-bezier(.16,1,.3,1) .25s both;
+  }
+  @keyframes watchIn {
+    from { opacity: 0; transform: translateY(46px) scale(.965); }
+  }
+  .hero-watch svg { width: 100%; height: auto; display: block; }
+  .hero-rule {
+    position: absolute;
+    top: 50%;
+    width: clamp(30px, 12vw, 220px);
+    height: 1px;
+    background: var(--hair);
+  }
+  .hero-rule.l { right: calc(50% + clamp(150px, 19vw, 240px)); }
+  .hero-rule.r { left: calc(50% + clamp(150px, 19vw, 240px)); }
+  .hero-side {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--sans);
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    writing-mode: vertical-rl;
+  }
+  .hero-side.l { left: clamp(14px, 3vw, 48px); transform: translateY(-50%) rotate(180deg); }
+  .hero-side.r { right: clamp(14px, 3vw, 48px); }
+  @media (max-width: 760px) { .hero-side, .hero-rule { display: none; } }
+
+  /* ---------- shared section chrome ---------- */
+  section { position: relative; }
+  .sec-label {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: clamp(36px, 6vh, 64px);
+  }
+  .sec-label::before, .sec-label::after {
+    content: "";
+    height: 1px;
+    background: var(--hair);
+    flex: 1;
+  }
+  .sec-label span { white-space: nowrap; }
+
+  /* ---------- mechanique ---------- */
+  .mech {
+    padding: clamp(90px, 16vh, 160px) clamp(22px, 5vw, 64px);
+    background: var(--paper-2);
+    border-top: 1px solid var(--hair);
+    border-bottom: 1px solid var(--hair);
+  }
+  .mech-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .mech-gears svg { width: 100%; height: auto; display: block; }
+  .mech-copy h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(40px, 5.4vw, 76px);
+    line-height: 1.02;
+    margin-bottom: 3vh;
+  }
+  .mech-copy h2 em { font-family: var(--serif); font-style: italic; font-weight: 300; color: var(--gold); }
+  .mech-copy p {
+    font-size: clamp(17px, 1.5vw, 20px);
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 52ch;
+  }
+  .mech-copy p + p { margin-top: 1.2em; }
+  .mech-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 5vh;
+    border-top: 1px solid var(--hair);
+    padding-top: 3.5vh;
+  }
+  .stat b {
+    display: block;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(30px, 3.4vw, 48px);
+    color: var(--ink);
+  }
+  .stat i {
+    font-style: normal;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 880px) { .mech-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- collection (horizontal scroll) ---------- */
+  .collection { height: 340vh; }
+  .coll-pin {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .coll-head {
+    padding: 0 clamp(22px, 5vw, 64px);
+    margin-bottom: 4vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .coll-head h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(38px, 5vw, 70px);
+  }
+  .coll-progress {
+    width: clamp(80px, 12vw, 180px);
+    height: 1px;
+    background: var(--hair);
+    position: relative;
+  }
+  .coll-progress i {
+    position: absolute;
+    left: 0; top: -1px;
+    height: 3px;
+    background: var(--gold);
+    width: 0%;
+  }
+  .track {
+    display: flex;
+    gap: clamp(24px, 3vw, 48px);
+    padding: 0 clamp(22px, 5vw, 64px);
+    will-change: transform;
+  }
+  .piece {
+    flex: 0 0 clamp(300px, 30vw, 430px);
+    border: 1px solid var(--hair);
+    background: var(--paper);
+    padding: clamp(24px, 2.6vw, 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: box-shadow .5s, transform .5s;
+  }
+  .piece:hover {
+    box-shadow: 0 30px 60px -30px rgba(33,29,21,.25);
+    transform: translateY(-6px);
+  }
+  .piece svg { width: 78%; height: auto; margin: 4% 0 8%; }
+  .piece h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 27px;
+    letter-spacing: .06em;
+  }
+  .piece .cal {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 10px 0 16px;
+  }
+  .piece .price {
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold);
+  }
+  .track .endcap {
+    flex: 0 0 clamp(280px, 26vw, 380px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .endcap a {
+    font-family: var(--sans);
+    font-weight: 300;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    padding: 22px 38px;
+    transition: background .4s, color .4s;
+    white-space: nowrap;
+  }
+  .endcap a:hover { background: var(--ink); color: var(--paper); }
+
+  /* ---------- atelier ---------- */
+  .atelier {
+    padding: clamp(90px, 18vh, 180px) clamp(22px, 5vw, 64px);
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .balance {
+    width: 72px;
+    margin: 0 auto 4vh;
+  }
+  .balance .osc {
+    transform-origin: 50% 50%;
+    animation: oscillate 1.05s cubic-bezier(.45,0,.55,1) infinite alternate;
+  }
+  @keyframes oscillate {
+    from { transform: rotate(-30deg); }
+    to { transform: rotate(30deg); }
+  }
+  .atelier blockquote {
+    font-size: clamp(26px, 3.6vw, 46px);
+    font-weight: 300;
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .atelier blockquote strong { font-weight: 500; color: var(--gold); font-style: normal; }
+  .atelier cite {
+    display: block;
+    margin-top: 4vh;
+    font-style: normal;
+  }
+  .atelier cite b {
+    display: block;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: .1em;
+  }
+  .atelier cite span {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--hair);
+    background: var(--paper-2);
+    padding: clamp(60px, 10vh, 110px) clamp(22px, 5vw, 64px) 40px;
+  }
+  .foot-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .foot-grid .brand-foot {
+    font-family: var(--display);
+    font-size: 34px;
+    letter-spacing: .3em;
+  }
+  .foot-grid h4 {
+    font-family: var(--sans);
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .foot-grid ul { list-style: none; }
+  .foot-grid li {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 2;
+  }
+  .foot-grid a { color: inherit; text-decoration: none; transition: color .3s; }
+  .foot-grid a:hover { color: var(--ink); }
+  .foot-base {
+    max-width: 1280px;
+    margin: 60px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--hair);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  @media (max-width: 880px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* ---------- reveal ---------- */
+  .rv { opacity: 0; transform: translateY(30px); transition: opacity 1.1s ease, transform 1.1s cubic-bezier(.16,1,.3,1); }
+  .rv.in { opacity: 1; transform: none; }
+  .rv-d1 { transition-delay: .12s; }
+  .rv-d2 { transition-delay: .24s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: .01ms !important; animation: none !important; }
+    .rv { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <nav>
+    <a href="#mecanique">La Mécanique</a>
+    <a href="#collection">Collection</a>
+  </nav>
+  <a class="brand" href="#">MÉRIDIEN</a>
+  <nav class="right">
+    <a href="#atelier">L'Atelier</a>
+    <a href="#maisons">Maisons</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <p class="label rv in">Maison d'Horlogerie · Genève · Depuis 1874</p>
+  <h1>MÉRIDIEN</h1>
+  <p class="tagline">Time, measured the slow way.</p>
+  <span class="hero-rule l"></span>
+  <span class="hero-rule r"></span>
+  <span class="hero-side l">Manufacture Calibre M-72</span>
+  <span class="hero-side r">Poinçon de Genève</span>
+  <div class="hero-watch" id="hero-watch"></div>
+</section>
+
+<section class="mech" id="mecanique">
+  <div class="mech-grid">
+    <div class="mech-gears rv" id="gear-stage"></div>
+    <div class="mech-copy">
+      <p class="label rv">01 — La Mécanique</p>
+      <h2 class="rv rv-d1">Two hundred parts.<br><em>No batteries, ever.</em></h2>
+      <p class="rv rv-d2">Every Méridien movement is drawn, cut, bevelled and assembled under one roof on the Rhône. The going train you see here is not an illustration of our work — it is the work, rendered line for line from the drawings of Calibre M-72.</p>
+      <p class="rv rv-d2">Wound by hand, it stores three days of running time and lets it go one beat at a time: 28,800 every hour, each one adjusted in six positions.</p>
+      <div class="mech-stats rv rv-d2">
+        <div class="stat"><b data-count="213">0</b><i>Components</i></div>
+        <div class="stat"><b data-count="72">0</b><i>Hours reserve</i></div>
+        <div class="stat"><b data-count="1874">0</b><i>Founded</i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="collection" id="collection">
+  <div class="coll-pin">
+    <div class="coll-head">
+      <h2 class="rv">The Collection</h2>
+      <div class="coll-progress"><i id="coll-bar"></i></div>
+    </div>
+    <div class="track" id="track"></div>
+  </div>
+</section>
+
+<section class="atelier" id="atelier">
+  <div class="balance rv" aria-hidden="true">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g class="osc">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#9a7b3f" stroke-width="2.5"/>
+        <rect x="14" y="47.5" width="72" height="5" rx="2.5" fill="none" stroke="#9a7b3f" stroke-width="1.4"/>
+        <path d="M50 50 m0 -4 a4 4 0 1 1 -4 4 a8 8 0 1 1 8 -8 a12 12 0 1 1 -12 12 a16 16 0 1 1 16 -16 a20 20 0 1 1 -20 20 a24 24 0 1 1 24 -24"
+              fill="none" stroke="#211d15" stroke-width="0.8" opacity="0.55"/>
+        <circle cx="50" cy="50" r="2.6" fill="#9a7b3f"/>
+      </g>
+    </svg>
+  </div>
+  <p class="label rv" style="margin-bottom: 5vh;">02 — L'Atelier</p>
+  <blockquote class="rv rv-d1">« A watch is finished when nothing more can be taken away — <strong>and the finishing takes years</strong>. »</blockquote>
+  <cite class="rv rv-d2">
+    <b>Élise Marchand</b>
+    <span>Master Watchmaker · Head of Atelier</span>
+  </cite>
+</section>
+
+<footer id="maisons">
+  <div class="foot-grid">
+    <div>
+      <div class="brand-foot rv">MÉRIDIEN</div>
+      <p style="margin-top:16px; font-style:italic; color:var(--ink-soft);">Rue du Rhône 47, Genève</p>
+    </div>
+    <div class="rv">
+      <h4>Maisons</h4>
+      <ul>
+        <li>Genève</li>
+        <li>Paris</li>
+        <li>London</li>
+        <li>Dubai</li>
+        <li>Tokyo</li>
+      </ul>
+    </div>
+    <div class="rv rv-d1">
+      <h4>Maison</h4>
+      <ul>
+        <li><a href="#mecanique">La Mécanique</a></li>
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#atelier">L'Atelier</a></li>
+        <li><a href="#">Archives</a></li>
+      </ul>
+    </div>
+    <div class="rv rv-d2">
+      <h4>Correspondence</h4>
+      <ul>
+        <li><a href="mailto:rendezvous@meridien.ch">rendezvous@meridien.ch</a></li>
+        <li><a href="tel:+41223104774">+41 22 310 47 74</a></li>
+        <li><a href="#">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 Méridien SA — Genève</span>
+    <span>Swiss made · Poinçon de Genève</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const NS = "http://www.w3.org/2000/svg";
+
+  /* ============ watch face builder ============ */
+  function watchSVG(o) {
+    const { dial = "#f6f2e9", accent = "#9a7b3f", ink = "#211d15", roman = false, moon = false, id = "w" } = o;
+    const tick = [];
+    for (let i = 0; i < 60; i++) {
+      const a = (i / 60) * Math.PI * 2;
+      const big = i % 5 === 0;
+      const r1 = big ? 150 : 155, r2 = 161;
+      tick.push(`<line x1="${200 + Math.sin(a) * r1}" y1="${200 - Math.cos(a) * r1}" x2="${200 + Math.sin(a) * r2}" y2="${200 - Math.cos(a) * r2}" stroke="${ink}" stroke-width="${big ? 2 : 0.8}" opacity="${big ? 0.9 : 0.55}"/>`);
+    }
+    const nums = [];
+    const labels = roman ? ["XII", "III", "VI", "IX"] : ["12", "3", "6", "9"];
+    const pos = [[200, 78], [325, 207], [200, 336], [75, 207]];
+    labels.forEach((t, i) => {
+      nums.push(`<text x="${pos[i][0]}" y="${pos[i][1]}" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="30" fill="${ink}">${t}</text>`);
+    });
+    // guilloché — concentric fine circles
+    const gui = [];
+    for (let r = 12; r <= 108; r += 6) {
+      gui.push(`<circle cx="200" cy="200" r="${r}" fill="none" stroke="${ink}" stroke-width="0.35" opacity="0.16"/>`);
+    }
+    const moonEl = moon ? `
+      <g transform="translate(200 268)">
+        <circle r="26" fill="none" stroke="${ink}" stroke-width="0.8" opacity="0.5"/>
+        <circle r="9" cx="-6" fill="${accent}" opacity="0.85"/>
+        <circle cx="8" cy="-8" r="1.4" fill="${ink}" opacity="0.5"/>
+        <circle cx="11" cy="4" r="1" fill="${ink}" opacity="0.5"/>
+        <circle cx="4" cy="10" r="1.2" fill="${ink}" opacity="0.5"/>
+      </g>` : `
+      <g transform="translate(200 268)">
+        <circle r="26" fill="none" stroke="${ink}" stroke-width="0.8" opacity="0.5"/>
+        <line id="${id}-sub" x1="0" y1="6" x2="0" y2="-20" stroke="${accent}" stroke-width="1.6"/>
+        <circle r="2" fill="${ink}"/>
+      </g>`;
+    return `
+    <svg viewBox="0 0 400 400" xmlns="${NS}" role="img" aria-label="Méridien watch face">
+      <circle cx="200" cy="200" r="196" fill="none" stroke="${ink}" stroke-width="1.4"/>
+      <circle cx="200" cy="200" r="188" fill="${dial}" stroke="${ink}" stroke-width="0.6"/>
+      <circle cx="200" cy="200" r="168" fill="none" stroke="${ink}" stroke-width="0.5" opacity="0.4"/>
+      ${gui.join("")}
+      ${tick.join("")}
+      ${nums.join("")}
+      <text x="200" y="140" text-anchor="middle" font-family="Italiana, serif" font-size="17" letter-spacing="4" fill="${ink}">MÉRIDIEN</text>
+      <text x="200" y="158" text-anchor="middle" font-family="Jost, sans-serif" font-weight="300" font-size="7" letter-spacing="2.4" fill="${ink}" opacity="0.6">GENÈVE</text>
+      ${moonEl}
+      <g id="${id}-h"><line x1="200" y1="200" x2="200" y2="112" stroke="${ink}" stroke-width="5" stroke-linecap="round"/></g>
+      <g id="${id}-m"><line x1="200" y1="200" x2="200" y2="72" stroke="${ink}" stroke-width="3" stroke-linecap="round"/></g>
+      <g id="${id}-s"><line x1="200" y1="216" x2="200" y2="58" stroke="${accent}" stroke-width="1.4" stroke-linecap="round"/></g>
+      <circle cx="200" cy="200" r="5" fill="${ink}"/>
+      <circle cx="200" cy="200" r="2" fill="${accent}"/>
+    </svg>`;
+  }
+
+  document.getElementById("hero-watch").innerHTML = watchSVG({ id: "hero", roman: true });
+
+  /* live hands — smooth sweep */
+  function driveWatch(id) {
+    const h = document.getElementById(id + "-h");
+    const m = document.getElementById(id + "-m");
+    const s = document.getElementById(id + "-s");
+    const sub = document.getElementById(id + "-sub");
+    if (!h) return () => {};
+    return () => {
+      const now = new Date();
+      const ms = now.getMilliseconds();
+      const sec = now.getSeconds() + ms / 1000;
+      const min = now.getMinutes() + sec / 60;
+      const hr = (now.getHours() % 12) + min / 60;
+      s.setAttribute("transform", `rotate(${sec * 6} 200 200)`);
+      m.setAttribute("transform", `rotate(${min * 6} 200 200)`);
+      h.setAttribute("transform", `rotate(${hr * 30} 200 200)`);
+      if (sub) sub.setAttribute("transform", `rotate(${sec * 6})`);
+    };
+  }
+  const heroDrive = driveWatch("hero");
+
+  /* ============ gear train ============ */
+  function gearPath(teeth, R, inner) {
+    // classic involute-ish silhouette approximation
+    const dr = R * 0.14;
+    const pts = [];
+    const steps = teeth * 4;
+    for (let i = 0; i <= steps; i++) {
+      const seg = i % 4;
+      const a = (i / steps) * Math.PI * 2;
+      const r = (seg === 0 || seg === 3) ? R - dr : R;
+      pts.push(`${(Math.cos(a) * r).toFixed(2)},${(Math.sin(a) * r).toFixed(2)}`);
+    }
+    let d = `M ${pts.join(" L ")} Z`;
+    d += ` M ${inner} 0 A ${inner} ${inner} 0 1 0 ${-inner} 0 A ${inner} ${inner} 0 1 0 ${inner} 0 Z`;
+    return d;
+  }
+  function gearGroup(id, teeth, R, x, y, color, spokes) {
+    const inner = R * 0.32;
+    let spokeEls = "";
+    for (let i = 0; i < spokes; i++) {
+      const a = (i / spokes) * 360;
+      spokeEls += `<rect x="${inner - 2}" y="-2.5" width="${R * 0.62 - inner}" height="5" rx="2.5" fill="none" stroke="${color}" stroke-width="1" transform="rotate(${a})"/>`;
+    }
+    return `
+    <g transform="translate(${x} ${y})">
+      <g id="${id}">
+        <path d="${gearPath(teeth, R, inner)}" fill="none" stroke="${color}" stroke-width="1.3" fill-rule="evenodd"/>
+        <circle r="${R * 0.62}" fill="none" stroke="${color}" stroke-width="0.7" opacity="0.5"/>
+        ${spokeEls}
+        <circle r="4" fill="${color}"/>
+      </g>
+      <text x="0" y="${R + 20}" text-anchor="middle" font-family="Jost, sans-serif" font-weight="300" font-size="9" letter-spacing="2" fill="#5c554a"></text>
+    </g>`;
+  }
+
+  const stage = document.getElementById("gear-stage");
+  const G = [
+    { id: "g1", teeth: 36, R: 95, x: 150, y: 210, color: "#211d15", spokes: 5 },
+    { id: "g2", teeth: 18, R: 50, x: 288, y: 168, color: "#9a7b3f", spokes: 3 },
+    { id: "g3", teeth: 28, R: 75, x: 398, y: 232, color: "#211d15", spokes: 4 },
+    { id: "g4", teeth: 12, R: 34, x: 461, y: 143, color: "#9a7b3f", spokes: 0 },
+    { id: "g5", teeth: 22, R: 60, x: 123, y: 362, color: "#5c554a", spokes: 4 },
+  ];
+  stage.innerHTML = `
+  <svg viewBox="0 0 560 470" xmlns="${NS}" role="img" aria-label="Animated gear train of Calibre M-72">
+    <defs></defs>
+    <line x1="150" y1="210" x2="288" y2="168" stroke="#211d15" stroke-width="0.4" opacity="0.25" stroke-dasharray="3 4"/>
+    <line x1="288" y1="168" x2="398" y2="232" stroke="#211d15" stroke-width="0.4" opacity="0.25" stroke-dasharray="3 4"/>
+    <line x1="398" y1="232" x2="461" y2="143" stroke="#211d15" stroke-width="0.4" opacity="0.25" stroke-dasharray="3 4"/>
+    <line x1="150" y1="210" x2="123" y2="362" stroke="#211d15" stroke-width="0.4" opacity="0.25" stroke-dasharray="3 4"/>
+    ${G.map(g => gearGroup(g.id, g.teeth, g.R, g.x, g.y, g.color, g.spokes)).join("")}
+    <text x="285" y="452" font-family="Jost, sans-serif" font-weight="300" font-size="10" letter-spacing="3" fill="#5c554a">CALIBRE M-72 — GOING TRAIN, 1:1</text>
+  </svg>`;
+
+  const gearEls = G.map(g => ({ el: document.getElementById(g.id), speed: 36 / g.teeth }));
+  // alternate directions along the mesh chain
+  const dirs = [1, -1, 1, -1, -1];
+
+  /* ============ collection pieces ============ */
+  const pieces = [
+    { name: "Méridien Classique", cal: "Calibre M-72 · Hand-wound", price: "CHF 18,400", dial: "#f6f2e9", accent: "#9a7b3f", roman: true },
+    { name: "Méridien Nuit", cal: "Calibre M-72N · Hand-wound", price: "CHF 21,900", dial: "#23262e", accent: "#b89a5e", ink: "#e8e4da", roman: false },
+    { name: "Méridien Lune", cal: "Calibre M-80 · Moonphase", price: "CHF 34,200", dial: "#eef0ea", accent: "#3f5a9a", roman: true, moon: true },
+    { name: "Méridien Vert", cal: "Calibre M-72 · Hand-wound", price: "CHF 19,700", dial: "#33413a", accent: "#b89a5e", ink: "#e8e4da", roman: false },
+  ];
+  const track = document.getElementById("track");
+  track.innerHTML = pieces.map((p, i) => `
+    <article class="piece">
+      ${watchSVG({ ...p, id: "p" + i })}
+      <h3>${p.name}</h3>
+      <p class="cal">${p.cal}</p>
+      <p class="price">${p.price}</p>
+    </article>`).join("") + `
+    <div class="endcap"><a href="mailto:rendezvous@meridien.ch">Book a rendez-vous</a></div>`;
+  const pieceDrives = pieces.map((_, i) => driveWatch("p" + i));
+
+  /* ============ horizontal scroll ============ */
+  const coll = document.querySelector(".collection");
+  const bar = document.getElementById("coll-bar");
+  let collProg = 0;
+  function layoutColl() {
+    const rect = coll.getBoundingClientRect();
+    const total = coll.offsetHeight - innerHeight;
+    collProg = Math.min(1, Math.max(0, -rect.top / total));
+    const overflow = track.scrollWidth - innerWidth;
+    track.style.transform = `translateX(${-collProg * overflow}px)`;
+    bar.style.width = (collProg * 100) + "%";
+  }
+
+  /* ============ header, reveals, counters ============ */
+  const hdr = document.getElementById("hdr");
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+  document.querySelectorAll(".rv").forEach(el => {
+    if (el.getBoundingClientRect().bottom < 0) el.classList.add("in");
+    else io.observe(el);
+  });
+
+  const cio = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    cio.unobserve(e.target);
+    const target = +e.target.dataset.count;
+    const t0 = performance.now();
+    const dur = 1600;
+    (function step(now) {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      e.target.textContent = Math.round(target * eased).toLocaleString("en-US").replace(/,/g, target > 999 ? "" : ",");
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }), { threshold: 0.6 });
+  document.querySelectorAll("[data-count]").forEach(el => cio.observe(el));
+
+  /* ============ main loop ============ */
+  let gearAngle = 0, lastT = performance.now();
+  function loop(now) {
+    const dt = Math.min((now - lastT) / 1000, 0.1);
+    lastT = now;
+    heroDrive();
+    pieceDrives.forEach(d => d());
+    if (!reduceMotion) {
+      gearAngle += dt * 14;
+      gearEls.forEach((g, i) => g.el.setAttribute("transform", `rotate(${gearAngle * g.speed * dirs[i]})`));
+    }
+    layoutColl();
+    hdr.classList.toggle("scrolled", scrollY > 40);
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+  addEventListener("resize", layoutColl);
+})();
+</script>
+</body>
+</html>

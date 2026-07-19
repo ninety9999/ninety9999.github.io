@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIZZI — Ridiculously Small-Batch Sodas</title>
+<meta name="description" content="FIZZI makes ridiculously small-batch sodas in flavors your inner child invented. Brewed in Margate, drunk everywhere.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fff6ec;
+    --ink: #3d2b56;
+    --pink: #ff90c2;
+    --straw: #ff5e97;
+    --mint: #7fe3c3;
+    --lemon: #ffd455;
+    --grape: #b79cff;
+    --sky: #8fd6ff;
+    --disp: "Fredoka", system-ui, sans-serif;
+    --body: "Nunito", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--body);
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--lemon); }
+
+  body.jiggle .jigglable { animation: jiggle .55s ease-in-out; }
+  @keyframes jiggle {
+    0%, 100% { transform: rotate(0); }
+    20% { transform: rotate(2.2deg) scale(1.02); }
+    45% { transform: rotate(-2deg) scale(.985); }
+    70% { transform: rotate(1.2deg); }
+  }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: fixed;
+    top: 16px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 246, 236, .82);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 8px 10px;
+    box-shadow: 0 6px 0 rgba(61, 43, 86, .16);
+  }
+  nav .logo {
+    font-family: var(--disp);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 2px 14px;
+    letter-spacing: .02em;
+  }
+  nav a.pill {
+    font-family: var(--disp);
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: background .2s, transform .2s;
+  }
+  nav a.pill:hover { background: var(--lemon); transform: rotate(-2deg); }
+  nav a.cta {
+    font-family: var(--disp);
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 9px 18px;
+    border-radius: 999px;
+    transition: transform .2s cubic-bezier(.34,1.56,.64,1), background .2s;
+  }
+  nav a.cta:hover { transform: scale(1.08) rotate(2deg); background: var(--straw); }
+  @media (max-width: 640px) { nav a.pill { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 90px 20px 60px;
+  }
+  .goo-wrap {
+    position: absolute;
+    inset: 0;
+    filter: blur(14px) contrast(12) saturate(.82);
+    background: var(--cream);
+  }
+  #goo { width: 100%; height: 100%; display: block; }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-content::before {
+    content: "";
+    position: absolute;
+    inset: -8% -14%;
+    background: radial-gradient(ellipse closest-side, rgba(255,246,236,.94), rgba(255,246,236,.6) 62%, rgba(255,246,236,0));
+    z-index: -1;
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-family: var(--disp);
+    font-weight: 700;
+    font-size: clamp(88px, 20vw, 300px);
+    line-height: .92;
+    letter-spacing: .01em;
+    user-select: none;
+  }
+  .hero h1 span {
+    display: inline-block;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), color .18s;
+    cursor: default;
+  }
+  .hero h1 span:nth-child(1) { color: var(--straw); }
+  .hero h1 span:nth-child(2) { color: var(--grape); }
+  .hero h1 span:nth-child(3) { color: var(--mint); }
+  .hero h1 span:nth-child(4) { color: #ffb03b; }
+  .hero h1 span:nth-child(5) { color: var(--sky); }
+  .hero h1 span:hover { transform: translateY(-14px) rotate(-6deg) scale(1.06); }
+  .hero .bang { color: var(--straw) !important; }
+  .hero p.tag {
+    font-size: clamp(17px, 2.2vw, 24px);
+    font-weight: 600;
+    max-width: 500px;
+    margin: 3vh auto 0;
+  }
+  .hero p.tag em { font-style: normal; background: var(--lemon); border-radius: 6px; padding: 0 6px; }
+  .hero .big-cta {
+    display: inline-block;
+    margin-top: 4.5vh;
+    font-family: var(--disp);
+    font-weight: 600;
+    font-size: clamp(16px, 2vw, 21px);
+    color: var(--cream);
+    background: var(--ink);
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 18px 40px;
+    border: 2px solid var(--ink);
+    box-shadow: 0 7px 0 rgba(61,43,86,.28);
+    transition: transform .16s cubic-bezier(.34,1.56,.64,1), box-shadow .16s;
+  }
+  .hero .big-cta:hover { transform: translateY(-3px) rotate(-1.4deg); box-shadow: 0 10px 0 rgba(61,43,86,.28); }
+  .hero .big-cta:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(61,43,86,.28); }
+  .hero .scroll-note {
+    position: absolute;
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: .55;
+    z-index: 2;
+  }
+
+  /* ---------- marquee ---------- */
+  .marq {
+    background: var(--ink);
+    color: var(--cream);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 14px 0;
+    transform: rotate(-1.2deg) scale(1.02);
+    margin: -12px 0 0;
+    position: relative;
+    z-index: 3;
+  }
+  .marq-inner { display: inline-block; animation: marq 20s linear infinite; }
+  .marq-inner span {
+    font-family: var(--disp);
+    font-weight: 600;
+    font-size: clamp(16px, 2.4vw, 26px);
+    margin-right: 2.6vw;
+  }
+  .marq-inner span:nth-child(4n+1) { color: var(--pink); }
+  .marq-inner span:nth-child(4n+2) { color: var(--lemon); }
+  .marq-inner span:nth-child(4n+3) { color: var(--mint); }
+  .marq-inner span:nth-child(4n+4) { color: var(--grape); }
+  @keyframes marq { to { transform: translateX(-50%); } }
+
+  /* ---------- flavors ---------- */
+  .flavors { padding: 12vh 5vw 8vh; }
+  .sec-head {
+    text-align: center;
+    margin-bottom: 7vh;
+  }
+  .sec-head h2 {
+    font-family: var(--disp);
+    font-weight: 700;
+    font-size: clamp(38px, 6.5vw, 84px);
+  }
+  .sec-head h2 mark {
+    background: none;
+    color: var(--straw);
+    position: relative;
+  }
+  .sec-head p { font-weight: 600; opacity: .75; margin-top: 8px; font-size: 17px; }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: clamp(18px, 3vw, 36px);
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #fff;
+    border: 2.5px solid var(--ink);
+    border-radius: 26px;
+    padding: 26px 22px 24px;
+    text-align: center;
+    box-shadow: 0 8px 0 rgba(61,43,86,.2);
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+    position: relative;
+  }
+  .card:nth-child(odd) { --tilt: -1.6deg; }
+  .card:nth-child(even) { --tilt: 1.4deg; }
+  .card { transform: rotate(var(--tilt, 0deg)); }
+  .card:hover { box-shadow: 0 16px 0 rgba(61,43,86,.2); z-index: 2; }
+  .card .badge {
+    position: absolute;
+    top: -14px; right: 18px;
+    font-family: var(--disp);
+    font-weight: 600;
+    font-size: 12px;
+    background: var(--lemon);
+    border: 2px solid var(--ink);
+    padding: 4px 12px;
+    border-radius: 999px;
+    transform: rotate(4deg);
+  }
+  .card svg { width: 88px; height: auto; margin: 6px auto 14px; display: block; }
+  .card h3 { font-family: var(--disp); font-weight: 600; font-size: 24px; }
+  .card p { font-size: 14.5px; font-weight: 600; opacity: .72; margin: 8px 0 16px; line-height: 1.55; }
+  .card .price {
+    font-family: var(--disp);
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .card .price s { opacity: .4; font-weight: 500; font-size: 15px; margin-right: 6px; }
+
+  /* ---------- steps ---------- */
+  .steps-sec {
+    background: var(--mint);
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+    padding: 10vh 5vw;
+    position: relative;
+  }
+  .steps {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: clamp(22px, 4vw, 48px);
+  }
+  .step { text-align: center; }
+  .step .num {
+    width: 64px; height: 64px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--disp);
+    font-weight: 700;
+    font-size: 26px;
+    background: var(--cream);
+    border: 2.5px solid var(--ink);
+    border-radius: 22px;
+    transform: rotate(-4deg);
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+    box-shadow: 0 5px 0 rgba(61,43,86,.25);
+  }
+  .step:hover .num { transform: rotate(4deg) scale(1.12); }
+  .step h3 { font-family: var(--disp); font-weight: 600; font-size: 22px; }
+  .step p { font-weight: 600; font-size: 15px; opacity: .8; margin-top: 8px; line-height: 1.6; }
+
+  /* ---------- footer ---------- */
+  footer {
+    text-align: center;
+    padding: 14vh 5vw 6vh;
+    position: relative;
+    overflow: hidden;
+  }
+  footer h2 {
+    font-family: var(--disp);
+    font-weight: 700;
+    font-size: clamp(56px, 11vw, 150px);
+    line-height: .95;
+  }
+  footer h2 em { font-style: normal; color: var(--straw); }
+  footer .sub { font-weight: 600; font-size: 17px; opacity: .75; margin-top: 14px; }
+  .foot-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 5vh;
+  }
+  .foot-actions a, .foot-actions button {
+    font-family: var(--disp);
+    font-weight: 600;
+    font-size: 17px;
+    padding: 15px 32px;
+    border-radius: 999px;
+    border: 2.5px solid var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .16s cubic-bezier(.34,1.56,.64,1);
+  }
+  .foot-actions .order { background: var(--ink); color: var(--cream); }
+  .foot-actions .order:hover { transform: scale(1.06) rotate(-1.6deg); }
+  .foot-actions .shake { background: var(--lemon); color: var(--ink); }
+  .foot-actions .shake:hover { transform: scale(1.06) rotate(1.6deg); }
+  .foot-base {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    opacity: .6;
+  }
+  .bubbles { position: absolute; inset: 0; pointer-events: none; }
+  .bubbles i {
+    position: absolute;
+    border-radius: 50%;
+    border: 2.5px solid var(--ink);
+    opacity: .16;
+    animation: rise linear infinite;
+  }
+  @keyframes rise {
+    from { transform: translateY(30vh); }
+    to { transform: translateY(-120vh); }
+  }
+
+  .rv { opacity: 0; transform: translateY(26px) scale(.97) rotate(var(--tilt, 0deg)); transition: opacity .8s ease, transform .8s cubic-bezier(.34,1.56,.64,1); }
+  .rv.in { opacity: 1; transform: rotate(var(--tilt, 0deg)); }
+  .card.rv.in:hover, .card:not(.rv):hover { transform: translateY(-10px) scale(1.03) rotate(0deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    .rv { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="jigglable">
+  <a class="logo" href="#">FIZZI!</a>
+  <a class="pill" href="#flavors">Flavors</a>
+  <a class="pill" href="#how">How</a>
+  <a class="cta" href="#thirsty">Get fizzy</a>
+</nav>
+
+<section class="hero">
+  <div class="goo-wrap"><canvas id="goo"></canvas></div>
+  <div class="hero-content jigglable">
+    <h1 id="fizzi" aria-label="FIZZI!"><span>F</span><span>I</span><span>Z</span><span>Z</span><span>I</span><span class="bang">!</span></h1>
+    <p class="tag">Ridiculously small-batch sodas in flavors <em>your inner child</em> invented. Brewed in Margate. Drunk everywhere.</p>
+    <a class="big-cta" href="#flavors">Pick your fizz ↓</a>
+  </div>
+  <span class="scroll-note">bubbles ahead</span>
+</section>
+
+<div class="marq" aria-hidden="true">
+  <div class="marq-inner">
+    <span>Strawberry Cloud</span><span>Yuzu Riot</span><span>Grape Escape</span><span>Mint Bomb</span><span>Lemon Racket</span><span>Peach Static</span>
+    <span>Strawberry Cloud</span><span>Yuzu Riot</span><span>Grape Escape</span><span>Mint Bomb</span><span>Lemon Racket</span><span>Peach Static</span>
+  </div>
+</div>
+
+<section class="flavors" id="flavors">
+  <div class="sec-head rv">
+    <h2>Four flavors. <mark>Zero chill.</mark></h2>
+    <p>All-natural, absurdly carbonated, 330ml of noise.</p>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section class="steps-sec" id="how">
+  <div class="sec-head rv">
+    <h2>How the fizz happens</h2>
+  </div>
+  <div class="steps">
+    <div class="step rv"><div class="num jigglable">1</div><h3>Fruit gets famous</h3><p>Real fruit from farms we can name on a first-name basis. No syrup impersonators.</p></div>
+    <div class="step rv"><div class="num jigglable">2</div><h3>Bubbles get loud</h3><p>Double-carbonated until the bottle hums. Open over a sink. We warned you.</p></div>
+    <div class="step rv"><div class="num jigglable">3</div><h3>You get thirsty</h3><p>Small batches drop every Friday. When it's gone, it's a rumor until next week.</p></div>
+  </div>
+</section>
+
+<footer id="thirsty">
+  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+  <h2 class="rv jigglable">Thirsty <em>yet?</em></h2>
+  <p class="sub rv">Friday drops. 500 crates. It gets feral.</p>
+  <div class="foot-actions rv">
+    <a class="order" href="mailto:crate@fizzi.club">Order a crate</a>
+    <button class="shake" id="shake-btn" type="button">Shake the page</button>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 FIZZI Soda Club</span>
+    <span>Margate, UK</span>
+    <span>Burp responsibly</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  "use strict";
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- metaball goo hero ---------- */
+  const cv = document.getElementById("goo");
+  const ctx = cv.getContext("2d");
+  const hero = document.querySelector(".hero");
+  const COLORS = ["#ff2d78", "#00c896", "#ffd000", "#8a5cff", "#29aaff", "#ff9500"];
+  let W = 0, H = 0;
+  const DPR = Math.min(devicePixelRatio || 1, 1.5);
+  function resize() {
+    W = cv.width = Math.round(hero.clientWidth * DPR);
+    H = cv.height = Math.round(hero.clientHeight * DPR);
+  }
+  resize();
+  addEventListener("resize", resize);
+
+  const blobs = [];
+  const NB = Math.min(14, Math.max(9, Math.round(innerWidth / 110)));
+  for (let i = 0; i < NB; i++) {
+    blobs.push({
+      x: Math.random(), y: Math.random(),
+      vx: 0, vy: 0,
+      r: 0.05 + Math.random() * 0.075,
+      hx: Math.random(), hy: Math.random(),
+      c: COLORS[i % COLORS.length],
+      wob: Math.random() * Math.PI * 2,
+    });
+  }
+
+  const mouse = { x: -10, y: -10, vx: 0, vy: 0, px: -10, py: -10 };
+  hero.addEventListener("pointermove", e => {
+    const r = hero.getBoundingClientRect();
+    mouse.x = (e.clientX - r.left) / r.width;
+    mouse.y = (e.clientY - r.top) / r.height;
+  });
+  hero.addEventListener("pointerleave", () => { mouse.x = -10; mouse.y = -10; });
+
+  let last = performance.now();
+  let running = !document.hidden;
+  document.addEventListener("visibilitychange", () => {
+    running = !document.hidden;
+    if (running) { last = performance.now(); requestAnimationFrame(tick); }
+  });
+
+  function tick(now) {
+    if (!running) return;
+    const dt = Math.min((now - last) / 1000, 0.08);
+    last = now;
+    mouse.vx = mouse.x - mouse.px; mouse.vy = mouse.y - mouse.py;
+    mouse.px = mouse.x; mouse.py = mouse.y;
+
+    ctx.clearRect(0, 0, W, H);
+    const t = now / 1000;
+    for (const b of blobs) {
+      // gentle drift home + wander
+      b.wob += dt * 0.7;
+      const wx = b.hx + Math.sin(b.wob + b.hx * 9) * 0.07;
+      const wy = b.hy + Math.cos(b.wob * 0.9 + b.hy * 7) * 0.07;
+      b.vx += (wx - b.x) * 0.55 * dt;
+      b.vy += (wy - b.y) * 0.55 * dt;
+      // cursor repulsion
+      const dx = b.x - mouse.x, dy = b.y - mouse.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < 0.09) {
+        const f = (0.09 - d2) * 5.5 * dt;
+        const d = Math.sqrt(d2) + 1e-4;
+        b.vx += (dx / d) * f;
+        b.vy += (dy / d) * f;
+      }
+      b.vx *= 0.965; b.vy *= 0.965;
+      b.x += b.vx * dt * 60 * 0.016 * 18;
+      b.y += b.vy * dt * 60 * 0.016 * 18;
+      if (b.x < -0.1) b.x = 1.1; if (b.x > 1.1) b.x = -0.1;
+      if (b.y < -0.1) b.y = 1.1; if (b.y > 1.1) b.y = -0.1;
+
+      const rr = b.r * (1 + Math.sin(t * 1.4 + b.wob) * 0.08) * Math.min(W, H);
+      ctx.fillStyle = b.c;
+      ctx.beginPath();
+      ctx.arc(b.x * W, b.y * H, rr, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    if (!reduceMotion) requestAnimationFrame(tick);
+  }
+  if (!reduceMotion) requestAnimationFrame(tick);
+  else { // static tasteful blobs
+    for (const b of blobs) {
+      ctx.fillStyle = b.c;
+      ctx.beginPath();
+      ctx.arc(b.x * W, b.y * H, b.r * Math.min(W, H), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  /* ---------- flavor cards ---------- */
+  function can(color, cap) {
+    return `
+    <svg viewBox="0 0 90 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="15" y="22" width="60" height="96" rx="14" fill="${color}" stroke="#3d2b56" stroke-width="2.5"/>
+      <rect x="15" y="22" width="60" height="96" rx="14" fill="none" stroke="#3d2b56" stroke-width="2.5"/>
+      <ellipse cx="45" cy="22" rx="30" ry="9" fill="${cap}" stroke="#3d2b56" stroke-width="2.5"/>
+      <rect x="40" y="6" width="10" height="10" rx="3" fill="${cap}" stroke="#3d2b56" stroke-width="2.5"/>
+      <circle cx="33" cy="58" r="4.5" fill="#fff6ec" stroke="#3d2b56" stroke-width="2"/>
+      <circle cx="52" cy="46" r="3" fill="#fff6ec" stroke="#3d2b56" stroke-width="2"/>
+      <circle cx="58" cy="72" r="5.5" fill="#fff6ec" stroke="#3d2b56" stroke-width="2"/>
+      <circle cx="38" cy="88" r="3.5" fill="#fff6ec" stroke="#3d2b56" stroke-width="2"/>
+      <path d="M30 100 Q45 110 60 100" fill="none" stroke="#3d2b56" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>`;
+  }
+  const flavors = [
+    { n: "Strawberry Cloud", d: "Roasted strawberries, vanilla fog, a rumor of black pepper.", p: "£3.20", c: "#ff90c2", cap: "#ffd455", b: "Best seller" },
+    { n: "Yuzu Riot", d: "Yuzu, lime leaf, and enough bubbles to void the warranty.", p: "£3.40", c: "#ffd455", cap: "#7fe3c3", b: "Loudest" },
+    { n: "Grape Escape", d: "Concord grape, violet, tastes like a cartoon getaway car.", p: "£3.20", c: "#b79cff", cap: "#ff90c2", b: "New" },
+    { n: "Mint Bomb", d: "Garden mint, cucumber, polar-bear energy. Slightly illegal.", p: "£3.20", c: "#7fe3c3", cap: "#8fd6ff", b: "Coldest" },
+  ];
+  document.getElementById("cards").innerHTML = flavors.map((f, i) => `
+    <article class="card rv jigglable" style="transition-delay:${i * 70}ms">
+      <span class="badge">${f.b}</span>
+      ${can(f.c, f.cap)}
+      <h3>${f.n}</h3>
+      <p>${f.d}</p>
+      <p class="price"><s>£4</s>${f.p}</p>
+    </article>`).join("");
+
+  /* ---------- footer bubbles ---------- */
+  const bub = document.getElementById("bubbles");
+  let bhtml = "";
+  for (let i = 0; i < 14; i++) {
+    const s = 14 + Math.random() * 46;
+    bhtml += `<i style="left:${(Math.random() * 96).toFixed(1)}%; bottom:${(-20 - Math.random() * 40).toFixed(0)}px; width:${s.toFixed(0)}px; height:${s.toFixed(0)}px; animation-duration:${(7 + Math.random() * 9).toFixed(1)}s; animation-delay:${(-Math.random() * 12).toFixed(1)}s;"></i>`;
+  }
+  bub.innerHTML = bhtml;
+
+  /* ---------- jiggle button ---------- */
+  const shakeBtn = document.getElementById("shake-btn");
+  shakeBtn.addEventListener("click", () => {
+    document.body.classList.remove("jiggle");
+    void document.body.offsetWidth;
+    document.body.classList.add("jiggle");
+    setTimeout(() => document.body.classList.remove("jiggle"), 650);
+  });
+
+  /* ---------- letter bounce on load ---------- */
+  const letters = document.querySelectorAll("#fizzi span");
+  if (!reduceMotion) {
+    letters.forEach((l, i) => {
+      l.animate(
+        [
+          { transform: "translateY(60px) scale(.6)", opacity: 0 },
+          { transform: "translateY(-12px) scale(1.06)", opacity: 1, offset: .7 },
+          { transform: "translateY(0) scale(1)", opacity: 1 },
+        ],
+        { duration: 700, delay: 120 + i * 90, easing: "cubic-bezier(.34,1.56,.64,1)", fill: "backwards" }
+      );
+    });
+  }
+
+  /* ---------- reveals ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) {
+      io.unobserve(e.target);
+      requestAnimationFrame(() => requestAnimationFrame(() => e.target.classList.add("in")));
+    }
+  }), { threshold: 0.15 });
+  document.querySelectorAll(".rv").forEach(el => {
+    if (el.getBoundingClientRect().bottom < 0) el.classList.add("in");
+    else io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
