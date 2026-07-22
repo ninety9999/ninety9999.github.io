@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>جَمْر — مطعم شواء سعودي</title>
+<meta name="description" content="جَمْر — مطعم شواء سعودي في الرياض. لحوم مختارة تُشوى على الفحم." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #faf8f4;
+    --paper2: #f3efe8;
+    --ink: #23201c;
+    --muted: #7a736a;
+    --accent: #8c3d24;
+    --line: #e4ded4;
+    --nav-bg: rgba(250, 248, 244, .95);
+    --story-text: #57514a;
+    --display: "Amiri", serif;
+    --body: "IBM Plex Sans Arabic", sans-serif;
+  }
+  html[data-theme="dark"] {
+    --paper: #16130e;
+    --paper2: #1d1913;
+    --ink: #ebe4d8;
+    --muted: #978d7f;
+    --accent: #c87a52;
+    --line: #2d2720;
+    --nav-bg: rgba(22, 19, 14, .95);
+    --story-text: #b5aa9b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body); font-weight: 300; line-height: 2; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+
+  .btn {
+    display: inline-block; font-size: .95rem; font-weight: 500;
+    padding: 13px 36px; border: 1px solid var(--ink); border-radius: 0;
+    transition: all .2s ease; letter-spacing: .02em;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn-solid { background: var(--ink); color: var(--paper); }
+  .btn-solid:hover { background: var(--accent); border-color: var(--accent); }
+
+  nav { position: sticky; top: 0; z-index: 50; background: var(--nav-bg); border-bottom: 1px solid var(--line); }
+  .theme-toggle {
+    background: none; border: 1px solid var(--line); border-radius: 50%;
+    width: 36px; height: 36px; cursor: pointer; color: var(--muted);
+    font-size: .95rem; line-height: 1; transition: all .2s ease;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-actions { display: flex; align-items: center; gap: 12px; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; max-width: 960px; margin: 0 auto; }
+  .logo { font-family: var(--display); font-weight: 700; font-size: 1.6rem; }
+  .nav-links { display: flex; gap: 34px; font-size: .95rem; color: var(--muted); }
+  .nav-links a:hover { color: var(--accent); }
+
+  header { text-align: center; padding: 120px 0 110px; }
+  .kicker { font-size: .85rem; letter-spacing: .3em; color: var(--muted); margin-bottom: 30px; }
+  h1 { font-family: var(--display); font-weight: 700; font-size: clamp(4rem, 11vw, 7rem); line-height: 1.1; margin-bottom: 20px; }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 480px; margin: 0 auto 48px; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero-rule { width: 40px; height: 1px; background: var(--accent); margin: 56px auto 0; }
+  .hero-meta { margin-top: 24px; font-size: .9rem; color: var(--muted); letter-spacing: .04em; }
+
+  section { padding: 96px 0; }
+  .sec-head { text-align: center; margin-bottom: 64px; }
+  .tag { display: block; font-size: .8rem; letter-spacing: .3em; color: var(--accent); margin-bottom: 14px; }
+  h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.9rem, 4.5vw, 2.6rem); }
+
+  .menu-wrap { max-width: 640px; margin: 0 auto; }
+  .menu-cat { margin-bottom: 64px; }
+  .menu-cat:last-child { margin-bottom: 0; }
+  .cat-title { font-family: var(--display); font-weight: 700; font-size: 1.4rem; text-align: center; margin-bottom: 34px; }
+  .cat-title::after { content: ""; display: block; width: 26px; height: 1px; background: var(--accent); margin: 14px auto 0; }
+  .dish { display: flex; align-items: baseline; gap: 14px; padding: 13px 0; }
+  .dish .n { font-weight: 500; font-size: 1.02rem; white-space: nowrap; }
+  .dish .d { font-size: .85rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dish .dots { flex: 1; border-bottom: 1px dotted var(--line); transform: translateY(-4px); min-width: 20px; }
+  .dish .p { font-weight: 500; white-space: nowrap; color: var(--accent); }
+  .menu-note { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 40px; }
+
+  .story { background: var(--paper2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .story-inner { max-width: 620px; margin: 0 auto; text-align: center; }
+  .story-inner h2 { margin-bottom: 26px; }
+  .story-inner p { color: var(--story-text); margin-bottom: 18px; font-size: 1.05rem; }
+  .story-inner .sig { font-family: var(--display); font-size: 1.15rem; color: var(--accent); margin-top: 10px; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); }
+  .info-cell { padding: 44px 30px; text-align: center; }
+  .info-cell + .info-cell { border-right: 1px solid var(--line); }
+  .info-cell b { display: block; font-family: var(--display); font-size: 1.2rem; font-weight: 700; margin-bottom: 12px; }
+  .info-cell span { color: var(--muted); font-size: .95rem; }
+  .info-cell a { color: var(--accent); }
+  .visit-cta { text-align: center; margin-top: 56px; }
+  .visit-cta p { color: var(--muted); margin-bottom: 24px; }
+
+  footer { border-top: 1px solid var(--line); padding: 34px 0; text-align: center; color: var(--muted); font-size: .85rem; }
+  footer b { font-family: var(--display); color: var(--ink); font-weight: 700; }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    header { padding: 84px 0 76px; }
+    section { padding: 68px 0; }
+    .info-grid { grid-template-columns: 1fr; }
+    .info-cell + .info-cell { border-right: none; border-top: 1px solid var(--line); }
+    .dish .d { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">جمر</div>
+    <div class="nav-links">
+      <a href="#menu">قائمة الطعام</a>
+      <a href="#story">قصتنا</a>
+      <a href="#visit">الموقع والحجز</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي">◐</button>
+      <a class="btn" style="padding:9px 24px; font-size:.85rem" href="#visit">احجز طاولة</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="container">
+    <div class="kicker">مطعم شواء سعودي</div>
+    <h1>جمر</h1>
+    <p class="hero-sub">لحوم مختارة بعناية، تُشوى على الفحم كما يجب أن تكون.</p>
+    <div class="hero-actions">
+      <a class="btn btn-solid" href="#menu">قائمة الطعام</a>
+      <a class="btn" href="#visit">احجز طاولة</a>
+    </div>
+    <div class="hero-rule"></div>
+    <div class="hero-meta">الرياض — حي الياسمين · يوميًا من ١٢ ظهرًا حتى ٢ فجرًا</div>
+  </div>
+</header>
+
+<section id="menu">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">القائمة</span>
+      <h2>قائمة الطعام</h2>
+    </div>
+    <div class="menu-wrap">
+      <div class="menu-cat">
+        <div class="cat-title">المشويات</div>
+        <div class="dish"><span class="n">ريش غنم</span><span class="d">مع صوص المطعم الخاص</span><span class="dots"></span><span class="p">٦٨ ر.س</span></div>
+        <div class="dish"><span class="n">كباب لحم</span><span class="d">مفروم يدويًا بالبهارات البلدية</span><span class="dots"></span><span class="p">٤٢ ر.س</span></div>
+        <div class="dish"><span class="n">شيش طاووق</span><span class="d">متبل بالزبادي والزعفران</span><span class="dots"></span><span class="p">٣٨ ر.س</span></div>
+        <div class="dish"><span class="n">مشكل جَمْر</span><span class="d">تشكيلة لشخصين</span><span class="dots"></span><span class="p">١٢٠ ر.س</span></div>
+      </div>
+      <div class="menu-cat">
+        <div class="cat-title">الأطباق الرئيسية</div>
+        <div class="dish"><span class="n">مندي لحم</span><span class="d">على الطريقة الحضرمية</span><span class="dots"></span><span class="p">٥٥ ر.س</span></div>
+        <div class="dish"><span class="n">مظبي دجاج</span><span class="d">على الحجر</span><span class="dots"></span><span class="p">٤٤ ر.س</span></div>
+        <div class="dish"><span class="n">كبسة لحم</span><span class="d">بلحم الحاشي</span><span class="dots"></span><span class="p">٧٥ ر.س</span></div>
+        <div class="dish"><span class="n">مقبلات وسلطات</span><span class="d">متبل، حمص، تبولة، فتوش</span><span class="dots"></span><span class="p">من ١٢ ر.س</span></div>
+      </div>
+      <div class="menu-cat">
+        <div class="cat-title">الحلا والمشروبات</div>
+        <div class="dish"><span class="n">كنافة بالقشطة</span><span class="d">تقدم ساخنة بالفستق</span><span class="dots"></span><span class="p">٢٨ ر.س</span></div>
+        <div class="dish"><span class="n">لقيمات</span><span class="d">بدبس التمر</span><span class="dots"></span><span class="p">١٨ ر.س</span></div>
+        <div class="dish"><span class="n">شاي بالنعناع</span><span class="d"></span><span class="dots"></span><span class="p">١٤ ر.س</span></div>
+        <div class="dish"><span class="n">قهوة سعودية وتمر</span><span class="d">ضيافة</span><span class="dots"></span><span class="p">مجانًا</span></div>
+      </div>
+    </div>
+    <p class="menu-note">الأسعار في هذا النموذج تجريبية للعرض</p>
+  </div>
+</section>
+
+<section id="story" class="story">
+  <div class="container">
+    <div class="story-inner">
+      <span class="tag">قصتنا</span>
+      <h2>من ديوانية العائلة إلى مطعم</h2>
+      <p>بدأت جَمْر من وصفات الوالد في شواء العيد — التتبيلة نفسها، والصبر نفسه على الفحم، والحرص نفسه على أن يصل اللحم إلى الصحن كما يجب.</p>
+      <p>اليوم نقدم التجربة ذاتها لأهل الرياض: لحوم بلدية تُختار يوميًا، وفحم غضا أصلي، وجلسات تليق بالعائلة.</p>
+      <p class="sig">عائلة جَمْر</p>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="container">
+    <div class="sec-head">
+      <span class="tag">زورونا</span>
+      <h2>الموقع والحجز</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-cell">
+        <b>العنوان</b>
+        <span>الرياض — حي الياسمين<br />طريق أنس بن مالك</span>
+      </div>
+      <div class="info-cell">
+        <b>أوقات العمل</b>
+        <span>يوميًا: ١٢ ظهرًا — ٢ فجرًا<br />الجمعة: ١ ظهرًا — ٢ فجرًا</span>
+      </div>
+      <div class="info-cell">
+        <b>الحجز والطلب</b>
+        <span>واتساب: <a href="#">05XXXXXXXX</a><br />أو اتصال مباشر</span>
+      </div>
+    </div>
+    <div class="visit-cta">
+      <p>للحجز أو الطلب للمنزل</p>
+      <a class="btn btn-solid" href="#">تواصل عبر واتساب</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container"><b>جمر</b> · مطعم شواء سعودي · الرياض ٢٠٢٦ — موقع تجريبي من تصميم بدر</div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var saved = localStorage.getItem("jamr-theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) root.setAttribute("data-theme", "dark");
+    document.getElementById("themeToggle").addEventListener("click", function () {
+      var dark = root.getAttribute("data-theme") === "dark";
+      if (dark) { root.removeAttribute("data-theme"); localStorage.setItem("jamr-theme", "light"); }
+      else { root.setAttribute("data-theme", "dark"); localStorage.setItem("jamr-theme", "dark"); }
+    });
+  })();
+</script>
+
+</body>
+</html>
