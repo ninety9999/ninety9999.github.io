@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>مركز آسك للعلاج الطبيعي — البديعة والملز، الرياض</title>
+<meta name="description" content="مركز آسك للعلاج الطبيعي والتأهيل للنساء والأطفال في الرياض. فرعان في ظهرة البديعة والملز، مسبح تأهيلي وصالة علاجية. احجزي جلسة تقييم عبر واتساب." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #faf8f3;
+    --paper2: #f2eee5;
+    --ink: #22302a;
+    --muted: #6e7a73;
+    --sage: #5d7d6b;
+    --sage-deep: #465f52;
+    --sage-soft: #e4ece6;
+    --line: #dfdacd;
+    --head: "Noto Kufi Arabic", "IBM Plex Sans Arabic", sans-serif;
+    --body: "IBM Plex Sans Arabic", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--body); font-weight: 300; line-height: 2; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, .logo { font-family: var(--head); }
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
+
+  .draft-note { background: var(--ink); color: var(--paper); text-align: center; font-size: .78rem; padding: 8px 14px; }
+  .draft-note b { color: #bcd3c4; }
+
+  .btn { display: inline-block; font-size: .95rem; font-weight: 500; padding: 13px 32px; border-radius: 3px; border: 1px solid var(--sage-deep); color: var(--sage-deep); transition: all .2s ease; }
+  .btn:hover { background: var(--sage-soft); }
+  .btn-solid { background: var(--sage-deep); color: #fff; }
+  .btn-solid:hover { background: var(--sage); color: #fff; }
+
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(250,248,243,.96); border-bottom: 1px solid var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 28px; max-width: 1060px; margin: 0 auto; }
+  .logo { font-weight: 700; font-size: 1.15rem; }
+  .logo small { font-family: var(--body); font-weight: 400; color: var(--muted); font-size: .78rem; margin-inline-start: 10px; }
+  .nav-links { display: flex; gap: 26px; font-size: .92rem; color: var(--muted); }
+  .nav-links a:hover { color: var(--ink); }
+
+  header { border-bottom: 1px solid var(--line); }
+  .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding: 96px 0; }
+  .kicker { font-size: .8rem; letter-spacing: .22em; color: var(--sage); margin-bottom: 20px; }
+  h1 { font-weight: 700; font-size: clamp(1.9rem, 4.6vw, 2.9rem); line-height: 1.6; margin-bottom: 18px; }
+  .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 520px; margin-bottom: 36px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-panel { background: var(--sage-soft); border: 1px solid var(--line); padding: 34px 30px; }
+  .hero-panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; }
+  .hero-panel ul { list-style: none; }
+  .hero-panel li { padding: 9px 0; border-top: 1px solid rgba(70,95,82,.18); font-size: .93rem; display: flex; justify-content: space-between; gap: 12px; }
+  .hero-panel li span { color: var(--muted); font-size: .85rem; }
+
+  section { padding: 88px 0; }
+  .sec-head { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-bottom: 48px; align-items: end; }
+  .tag { display: block; font-size: .78rem; letter-spacing: .24em; color: var(--sage); margin-bottom: 10px; }
+  h2 { font-weight: 700; font-size: clamp(1.4rem, 3.2vw, 1.9rem); line-height: 1.6; }
+  .sec-head p { color: var(--muted); font-size: .97rem; max-width: 520px; }
+
+  .prog { border-top: 1px solid var(--line); }
+  .prog-row { display: grid; grid-template-columns: 70px 1fr 2fr; gap: 24px; padding: 26px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .prog-row i { font-style: normal; font-family: var(--head); color: var(--sage); font-size: .95rem; }
+  .prog-row b { font-weight: 600; font-size: 1.05rem; }
+  .prog-row p { color: var(--muted); font-size: .93rem; }
+
+  .facility { background: var(--paper2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fac-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .fac { background: #fff; border: 1px solid var(--line); padding: 34px 30px; }
+  .fac .band { height: 6px; background: var(--sage); width: 56px; margin-bottom: 22px; }
+  .fac h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .fac p { color: var(--muted); font-size: .93rem; }
+  .fac ul { margin-top: 14px; padding-inline-start: 18px; color: var(--muted); font-size: .9rem; }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: s; }
+  .step { border-top: 2px solid var(--sage-deep); padding-top: 16px; }
+  .step::before { counter-increment: s; content: counter(s, arabic-indic); font-family: var(--head); font-size: 1.3rem; color: var(--sage); display: block; margin-bottom: 6px; }
+  .step b { display: block; font-weight: 600; margin-bottom: 6px; }
+  .step span { color: var(--muted); font-size: .9rem; }
+
+  .branches { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .branch { background: #fff; border: 1px solid var(--line); padding: 32px 30px; }
+  .branch h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+  .branch p { color: var(--muted); font-size: .92rem; }
+  .branch .hours { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-size: .9rem; }
+  .branch .hours b { font-weight: 600; }
+  .book-cta { margin-top: 46px; padding: 34px 30px; background: var(--sage-soft); border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .book-cta p { color: var(--ink); font-size: 1rem; max-width: 560px; }
+  .book-cta p span { display: block; color: var(--muted); font-size: .88rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  footer b { color: var(--ink); }
+
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 64px 0; gap: 32px; }
+    section { padding: 62px 0; }
+    .sec-head { grid-template-columns: 1fr; gap: 10px; }
+    .prog-row { grid-template-columns: 44px 1fr; }
+    .prog-row p { grid-column: 2; }
+    .fac-grid, .steps, .branches { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="draft-note">تصميم مبدئي مُقدَّم لإدارة مركز آسك — إعداد <b>بدر</b> · الأوقات والأسماء والصور تُستكمل من المركز</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">آسك<small>للعلاج الطبيعي والتأهيل</small></div>
+    <div class="nav-links">
+      <a href="#programs">البرامج</a>
+      <a href="#facility">المسبح والصالة</a>
+      <a href="#journey">رحلة العلاج</a>
+      <a href="#branches">الفروع</a>
+    </div>
+    <a class="btn btn-solid" style="padding:9px 22px; font-size:.88rem" href="#branches">احجزي جلسة تقييم</a>
+  </div>
+</nav>
+
+<header>
+  <div class="container hero">
+    <div>
+      <div class="kicker">علاج طبيعي وتأهيل · للنساء والأطفال</div>
+      <h1>نعيدكِ إلى حركتكِ<br />خطوة بخطوة</h1>
+      <p class="hero-sub">مركز علاج طبيعي بكادر نسائي، يجمع الجلسات اليدوية والعلاج المائي والتأهيل الحركي تحت سقف واحد، في فرعين بالرياض: ظهرة البديعة والملز.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#branches">احجزي جلسة تقييم</a>
+        <a class="btn" href="#programs">تعرّفي على البرامج</a>
+      </div>
+    </div>
+    <aside class="hero-panel">
+      <h3>ماذا ستجدين في آسك</h3>
+      <ul>
+        <li>كادر نسائي بالكامل <span>للنساء والأطفال</span></li>
+        <li>مسبح تأهيلي <span>علاج مائي</span></li>
+        <li>صالة تأهيل حركي <span>أجهزة وتمارين</span></li>
+        <li>فرعان <span>البديعة · الملز</span></li>
+        <li>خطة علاج مكتوبة <span>بعد جلسة التقييم</span></li>
+      </ul>
+    </aside>
+  </div>
+</header>
+
+<section id="programs">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="tag">البرامج</span><h2>ماذا نعالج</h2></div>
+      <p>كل برنامج يبدأ بجلسة تقييم، ثم خطة علاج بعدد جلسات وأهداف واضحة تُراجع كل أسبوعين.</p>
+    </div>
+    <div class="prog">
+      <div class="prog-row"><i>٠١</i><b>آلام الظهر والرقبة</b><p>الانزلاق الغضروفي، تيبس الرقبة، وآلام أسفل الظهر المزمنة، بعلاج يدوي وتمارين مصممة لحالتك.</p></div>
+      <div class="prog-row"><i>٠٢</i><b>ما بعد العمليات والكسور</b><p>استعادة مدى الحركة والقوة بعد جراحات المفاصل والكسور، بتدرج آمن ومتابعة مع طبيبك.</p></div>
+      <div class="prog-row"><i>٠٣</i><b>تأهيل الأطفال</b><p>تأخر النمو الحركي، الشلل الدماغي، ومشاكل التوازن والمشي، بجلسات تعتمد على اللعب والتكرار.</p></div>
+      <div class="prog-row"><i>٠٤</i><b>ما قبل الولادة وبعدها</b><p>آلام الحوض والظهر أثناء الحمل، وتقوية قاع الحوض والبطن بعد الولادة.</p></div>
+      <div class="prog-row"><i>٠٥</i><b>العلاج المائي</b><p>جلسات في المسبح التأهيلي للحالات التي تحتاج حركة بلا حِمل على المفاصل، مثل التهاب المفاصل وما بعد الجراحة.</p></div>
+      <div class="prog-row"><i>٠٦</i><b>التأهيل الرياضي</b><p>إصابات الركبة والكتف والكاحل، والعودة التدريجية للنشاط الرياضي في صالة التأهيل.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="facility" class="facility">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="tag">المرافق</span><h2>المسبح والصالة</h2></div>
+      <p>مرفقان قلّما يتوفران معًا في مركز علاج طبيعي، وهما ما يميز آسك.</p>
+    </div>
+    <div class="fac-grid">
+      <div class="fac"><div class="band"></div><h3>المسبح التأهيلي</h3><p>مياه دافئة بعمق مناسب للعلاج، تخفف وزن الجسم على المفاصل وتسمح بحركة كانت مؤلمة على اليابسة.</p><ul><li>جلسات فردية بإشراف أخصائية</li><li>مناسب للحوامل وكبار السن والأطفال</li></ul></div>
+      <div class="fac"><div class="band"></div><h3>صالة التأهيل الحركي</h3><p>أجهزة تقوية وتوازن وتمارين وظيفية تحاكي حركة يومك، لتعودي لنشاطك لا لجلسة العلاج فقط.</p><ul><li>برامج تقوية بعد الإصابة</li><li>متابعة تقدمك بقياسات دورية</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="tag">رحلة العلاج</span><h2>ثلاث خطوات</h2></div>
+      <p>لا نبدأ الجلسات قبل أن نفهم الحالة، ولا نستمر بلا قياس.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><b>جلسة تقييم</b><span>فحص شامل للحركة والألم والتاريخ الطبي، ومراجعة تقارير الطبيب إن وُجدت.</span></div>
+      <div class="step"><b>خطة علاج مكتوبة</b><span>عدد الجلسات، أهداف كل مرحلة، وما ستفعلينه في البيت بين الجلسات.</span></div>
+      <div class="step"><b>متابعة وقياس</b><span>مراجعة التقدم كل أسبوعين وتعديل الخطة، حتى الوصول للهدف.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="branches" style="background: var(--paper2); border-top: 1px solid var(--line);">
+  <div class="container">
+    <div class="sec-head">
+      <div><span class="tag">الفروع</span><h2>أقرب فرع إليكِ</h2></div>
+      <p>فرعان في الرياض، ويمكن الحجز في أيٍّ منهما عبر واتساب.</p>
+    </div>
+    <div class="branches">
+      <div class="branch"><h3>فرع ظهرة البديعة</h3><p>تقاطع شارع عائشة بنت أبي بكر مع شارع معاوية بن أبي سفيان، غرب الرياض<br />(يُضاف رابط الخريطة)</p><div class="hours"><b>أوقات العمل:</b> تُضاف من المركز</div></div>
+      <div class="branch"><h3>فرع الملز</h3><p>حي الملز، وسط الرياض<br />(يُضاف العنوان التفصيلي ورابط الخريطة)</p><div class="hours"><b>أوقات العمل:</b> تُضاف من المركز</div></div>
+    </div>
+    <div class="book-cta">
+      <p>احجزي جلسة التقييم الأولى<span>الرد عبر واتساب خلال أوقات العمل، ونساعدكِ في اختيار الفرع والبرنامج المناسب.</span></p>
+      <a class="btn btn-solid" href="https://wa.me/966549584666?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%AC%D9%84%D8%B3%D8%A9%20%D8%AA%D9%82%D9%8A%D9%8A%D9%85" target="_blank" rel="noopener">احجزي عبر واتساب</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px">
+    <div><b>مركز آسك للعلاج الطبيعي</b> · البديعة · الملز · الرياض ٢٠٢٦</div>
+    <div>تصميم مبدئي من بدر</div>
+  </div>
+</footer>
+
+</body>
+</html>
