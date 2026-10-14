@@ -21,7 +21,8 @@ A modern, responsive portfolio template built with HTML, CSS, and JavaScript.
   so the "Say Hello" button reaches you.
 - **Projects:** each project in script.js has a `title`, a `category`
   (`design` or `development`, matching the filter buttons), a short `label`
-  shown on the card, and a card `color`.
+  shown on the card, and a card `color` (any CSS color, or `var(--accent)`
+  to follow the accent color).
 - **Accent color:** one variable, `--accent` at the top of style.css,
   recolors buttons, filters, and highlighted words.
 - **Name/logo:** replace "NOIR." in the header and footer of index.html.

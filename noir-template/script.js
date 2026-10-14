@@ -9,7 +9,19 @@ const projects = [
     title: "Form Architecture",
     category: "development",
     label: "FORM.",
-    color: "#3B82F6"
+    color: "var(--accent)"
+  },
+  {
+    title: "Harbor Coffee Roasters",
+    category: "design",
+    label: "HARBOR",
+    color: "#f5f5f5"
+  },
+  {
+    title: "Ledger Finance Dashboard",
+    category: "development",
+    label: "LEDGER",
+    color: "#9ca3af"
   }
 ];
 
