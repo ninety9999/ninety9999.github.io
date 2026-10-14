@@ -70,7 +70,6 @@ h1 {
 }
 
 .dot {
-  color:#3298ff;
   color: var(--accent);
 }
 
@@ -277,7 +276,7 @@ h1 {
 }
 
 .about-content h2 span {
-  color: #3298ff;
+  color: var(--accent);
 }
 
 .about-content p {
@@ -326,7 +325,7 @@ h1 {
 }
 
 .contact h2 span {
-  color:#3298ff;
+  color: var(--accent);
 }
 
 .contact p {
